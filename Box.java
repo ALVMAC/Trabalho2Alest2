@@ -1,17 +1,30 @@
+import java.util.Arrays;
+
 public class Box {
 
-    private int d1, d2, d3;
+    private int[] dimensions;
 
     public Box(int d1, int d2, int d3) {
-        this.d1 = d1;
-        this.d2 = d2;
-        this.d3 = d3;
+        dimensions = new int[] { d1, d2, d3 };
+        Arrays.sort(dimensions);
     }
 
     public boolean cabe(Box b) {
-        if ((this.d1 * this.d2 * this.d3) > (b.d1 * b.d2 * b.d3)) {
-            return true;
+        for (int i = 0; i < 3; i++) {
+            if (this.dimensions[i] >= b.dimensions[i]) {
+                return false;
+            }
         }
-        return false;
+        return true;
     }
+
+    @Override
+    public String toString() {
+        return "Box{" +
+                "d1=" + dimensions[0] +
+                ", d2=" + dimensions[1] +
+                ", d3=" + dimensions[2] +
+                '}';
+    }
+
 }
