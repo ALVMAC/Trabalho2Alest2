@@ -6,7 +6,7 @@ public class Box {
 
     public Box(int d1, int d2, int d3) {
         dimensions = new int[] { d1, d2, d3 };
-        Arrays.sort(dimensions);
+        // Arrays.sort(dimensions);
     }
 
     public boolean cabe(Box b) {

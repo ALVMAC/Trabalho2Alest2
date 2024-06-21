@@ -13,14 +13,15 @@ public class ConstrutorGraph {
             for (int j = 0; j < boxes.size(); j++) {
                 if (i != j && boxes.get(i).cabe(boxes.get(j))) {
                     graph.addEdge(boxes.get(i), boxes.get(j));
-                    System.out.print(boxes.get(i) + " ");
-                    System.out.println(boxes.get(j));
+                    // System.out.print(boxes.get(i) + " ");
+                    // System.out.println(boxes.get(j));
                     aux++;
                 }
             }
             if (aux > total) {
                 total = aux;
                 graph.setTotal(total);
+                // System.out.println(aux);
             }
         }
 

@@ -13,8 +13,6 @@ public class Leitura {
         String currDir = System.getProperty("user.dir");
         String completo = currDir + relativo;
         Path p = Paths.get(completo);
-        System.out.println(currDir);
-        System.out.println(completo);
 
         List<Box> boxes = new ArrayList<>();
 

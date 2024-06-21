@@ -28,4 +28,9 @@ public class Graph {
         graph.get(box1).add(box2);
     }
 
+    @Override
+    public String toString() {
+        return "Graph [graph=" + graph + "]";
+    }
+
 }

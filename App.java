@@ -5,50 +5,76 @@ public class App {
     public static void main(String[] args) {
         Leitura fileReader = new Leitura();
         Scanner sc = new Scanner(System.in);
-        List<Box> boxes = fileReader.leArquivo("\\teste.txt");
-        ConstrutorGraph construtor = new ConstrutorGraph();
-        Graph graph = construtor.contrutorGrafo(boxes);
-        System.out.println(graph.getTotal());
-        for (Box b : boxes) {
-            System.out.println(b);
-        }
+        // for (Box b : boxes) {
+        // System.out.println(b);
+        // }
 
-        /*
-         * while (true) {
-         * System.out
-         * .println("\nQual caso você deseja\n1.10\n2.20\n3.50\n4.100\n5.200\n6.300\n7.500\n8.1000\n9. sair"
-         * );
-         * int escolha = sc.nextInt();
-         * if (escolha == 1) {
-         * 
-         * }
-         * if (escolha == 2) {
-         * 
-         * }
-         * if (escolha == 3) {
-         * 
-         * }
-         * if (escolha == 4) {
-         * 
-         * }
-         * if (escolha == 5) {
-         * 
-         * }
-         * if (escolha == 6) {
-         * 
-         * }
-         * if (escolha == 7) {
-         * 
-         * }
-         * if (escolha == 8) {
-         * 
-         * }
-         * if (escolha == 9) {
-         * System.out.println("Saindo...");
-         * sc.close();
-         * break;
-         * }
-         * }
-         */
+        while (true) {
+            System.out.println("\nQual caso você deseja\n" +
+                    "1. 10\n" +
+                    "2. 20\n" +
+                    "3. 50\n" +
+                    "4. 100\n" +
+                    "5. 200\n" +
+                    "6. 300\n" +
+                    "7. 500\n" +
+                    "8. 1000\n" +
+                    "9. 2000\n" +
+                    "10. 5000\n" +
+                    "11. 10000\n" +
+                    "12. sair");
+
+            int escolha = sc.nextInt();
+            String fileName = "";
+
+            switch (escolha) {
+                case 1:
+                    fileName = "\\caso00010.txt";
+                    break;
+                case 2:
+                    fileName = "\\caso00020.txt";
+                    break;
+                case 3:
+                    fileName = "\\caso00050.txt";
+                    break;
+                case 4:
+                    fileName = "\\caso00100.txt";
+                    break;
+                case 5:
+                    fileName = "\\caso00200.txt";
+                    break;
+                case 6:
+                    fileName = "\\caso00300.txt";
+                    break;
+                case 7:
+                    fileName = "\\caso00500.txt";
+                    break;
+                case 8:
+                    fileName = "\\caso01000.txt";
+                    break;
+                case 9:
+                    fileName = "\\caso02000.txt";
+                    break;
+                case 10:
+                    fileName = "\\caso05000.txt";
+                    break;
+                case 11:
+                    fileName = "\\caso10000.txt";
+                    break;
+                case 12:
+                    System.out.println("Saindo...");
+                    sc.close();
+                    return;
+                default:
+                    System.out.println("Escolha inválida. Tente novamente.");
+                    continue;
+            }
+
+            List<Box> boxes = fileReader.leArquivo(fileName);
+            ConstrutorGraph construtor = new ConstrutorGraph();
+            Graph graph = construtor.contrutorGrafo(boxes);
+            System.out.println(graph.getTotal());
+            System.out.println(graph);
+        }
     }
 }
