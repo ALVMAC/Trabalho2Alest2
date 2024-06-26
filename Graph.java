@@ -16,6 +16,10 @@ public class Graph {
         graph.putIfAbsent(box, new ArrayList<>());
     }
 
+    public List<Box> getAdjacentBoxes(Box box) {
+        return graph.getOrDefault(box, new ArrayList<>());
+    }
+
     public int getTotal() {
         return total;
     }

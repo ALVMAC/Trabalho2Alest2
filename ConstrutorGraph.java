@@ -1,30 +1,44 @@
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ConstrutorGraph {
 
-    public Graph contrutorGrafo(List<Box> boxes) {
-        int total = 0;
-        Graph graph = new Graph();
+    public void construtorGraph(List<Box> boxes, Graph graph) {
         for (Box box : boxes) {
             graph.addBox(box);
         }
-        for (int i = 0; i < boxes.size(); i++) {
-            int aux = 0;
-            for (int j = 0; j < boxes.size(); j++) {
-                if (i != j && boxes.get(i).cabe(boxes.get(j))) {
-                    graph.addEdge(boxes.get(i), boxes.get(j));
-                    // System.out.print(boxes.get(i) + " ");
-                    // System.out.println(boxes.get(j));
-                    aux++;
+        for (Box b1 : boxes) {
+            for (Box b2 : boxes) {
+                if (b1 != b2 && b1.cabe(b2)) {
+                    graph.addEdge(b1, b2);
                 }
             }
-            if (aux > total) {
-                total = aux;
-                graph.setTotal(total);
-                // System.out.println(aux);
+        }
+    }
+
+    public int encontrarMaiorAninhamento(Graph graph, List<Box> boxes) {
+        Map<Box, Integer> mapa = new HashMap<>();
+        int maior = 0;
+        for (Box box : boxes) {
+            if(maior < dfs(graph, box, mapa)){
+                maior = dfs(graph, box, mapa);
             }
         }
+        return maior;
+    }
 
-        return graph;
+    private int dfs(Graph graph, Box box, Map<Box, Integer> mapa) {
+        if (mapa.containsKey(box)) {
+            return mapa.get(box);
+        }
+        int maior = 1; // Inclui a própria caixa
+        for (Box next : graph.getAdjacentBoxes(box)) {
+            if(maior < dfs(graph, next, mapa)+1){
+                maior = dfs(graph, next, mapa)+1;
+            }
+        }
+        mapa.put(box, maior);
+        return maior;
     }
 }

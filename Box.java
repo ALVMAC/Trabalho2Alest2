@@ -2,16 +2,16 @@ import java.util.Arrays;
 
 public class Box {
 
-    private int[] dimensions;
+    private int[] dimensoes;
 
     public Box(int d1, int d2, int d3) {
-        dimensions = new int[] { d1, d2, d3 };
-        // Arrays.sort(dimensions);
+        dimensoes = new int[] { d1, d2, d3 };
+        Arrays.sort(dimensoes);
     }
 
     public boolean cabe(Box b) {
         for (int i = 0; i < 3; i++) {
-            if (this.dimensions[i] >= b.dimensions[i]) {
+            if (this.dimensoes[i] >= b.dimensoes[i]) {
                 return false;
             }
         }
@@ -21,9 +21,9 @@ public class Box {
     @Override
     public String toString() {
         return "Box{" +
-                "d1=" + dimensions[0] +
-                ", d2=" + dimensions[1] +
-                ", d3=" + dimensions[2] +
+                "d1=" + dimensoes[0] +
+                ", d2=" + dimensoes[1] +
+                ", d3=" + dimensoes[2] +
                 '}';
     }
 

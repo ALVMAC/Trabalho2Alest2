@@ -29,28 +29,28 @@ public class App {
 
             switch (escolha) {
                 case 1:
-                    fileName = "\\caso00010.txt";
+                    fileName = "/caso00010.txt";
                     break;
                 case 2:
-                    fileName = "\\caso00020.txt";
+                    fileName = "/caso00020.txt";
                     break;
                 case 3:
-                    fileName = "\\caso00050.txt";
+                    fileName = "/caso00050.txt";
                     break;
                 case 4:
-                    fileName = "\\caso00100.txt";
+                    fileName = "/caso00100.txt";
                     break;
                 case 5:
-                    fileName = "\\caso00200.txt";
+                    fileName = "/caso00200.txt";
                     break;
                 case 6:
-                    fileName = "\\caso00300.txt";
+                    fileName = "/caso00300.txt";
                     break;
                 case 7:
-                    fileName = "\\caso00500.txt";
+                    fileName = "/caso00500.txt";
                     break;
                 case 8:
-                    fileName = "\\caso01000.txt";
+                    fileName = "/caso01000.txt";
                     break;
                 case 9:
                     fileName = "\\caso02000.txt";
@@ -72,9 +72,9 @@ public class App {
 
             List<Box> boxes = fileReader.leArquivo(fileName);
             ConstrutorGraph construtor = new ConstrutorGraph();
-            Graph graph = construtor.contrutorGrafo(boxes);
-            System.out.println(graph.getTotal());
-            System.out.println(graph);
+            Graph g = new Graph();
+            construtor.construtorGraph(boxes, g);
+            System.out.println(construtor.encontrarMaiorAninhamento(g, boxes));
         }
     }
 }
