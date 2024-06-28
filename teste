@@ -1,0 +1,52 @@
+Classe Box:
+    vetor[inteiros] dimensoes
+    Box(primeira dimensao, segunda dimensao, terceira dimensao):
+        dimensoes = [primeira dimensao, segunda dimensao, terceira dimensao]
+        ordena dimensoes
+    
+    cabe(Box b):
+        for i = 0 até i<3:
+            se (Box atual dimensao[i]>= Box comparada):
+                retorna falso
+        retorna verdadeiro
+
+Classe Graph:
+    Atributo mapa(Box, lista Box) Graph
+    graph:
+        cria o mapa graph.
+    
+    addBox(Box box):
+        adiciona ao graph uma nova caixa(vertice)
+    
+    getAdj (Box box):
+        retorna uma lista de vertices adjacentes a box
+    
+    addEdge(Box box1, Box box2):
+        adiciona vertice entre duas caixas
+    
+Classe Caminho:
+    construtorGraph(Lista Box, Graph):
+        for Box atual de Lista Box:
+            Graph addBox(Box atual)
+        for Box atual de Lista Box:
+            for Segunda Box de Lista Box:
+                se Segunda Box != Box atual and box atual cabe(Segunda box):
+                    Graph addEdge(Box atual, segunda Box)
+    
+    encontraMaior(Graph, Lista Box):
+        mapa(Box, inteiro)
+        maior = 0
+        for Lista Box:
+            se maior < dfs(Graph, box atual, mapa):
+                maior = dfs(Graph, box atual, mapa)
+        retorna maior
+
+    dfs(Graph, Box, mapa(Box, inteiro)):
+        se vertice ja foi visitado:
+            valor inteiro mapa
+        maior = 1
+        for Lista de caixas adjancentes ao vertice:
+            se maior < dfs(graph, proxima Box, mapa)+1
+                maior = dfs(graph, proxima Box, mapa)+1
+        adiciona valor ao vertice e marca
+        retorna maior

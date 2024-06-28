@@ -53,28 +53,28 @@ public class App {
                     fileName = "/caso01000.txt";
                     break;
                 case 9:
-                    fileName = "\\caso02000.txt";
+                    fileName = "/caso02000.txt";
                     break;
                 case 10:
-                    fileName = "\\caso05000.txt";
+                    fileName = "/caso05000.txt";
                     break;
                 case 11:
-                    fileName = "\\caso10000.txt";
+                    fileName = "/caso10000.txt";
                     break;
                 case 12:
                     System.out.println("Saindo...");
                     sc.close();
                     return;
                 default:
-                    System.out.println("Escolha inválida. Tente novamente.");
+                    System.out.println("Escolha uma opção valida, amigao");
                     continue;
             }
 
             List<Box> boxes = fileReader.leArquivo(fileName);
-            ConstrutorGraph construtor = new ConstrutorGraph();
+            Caminho construtor = new Caminho();
             Graph g = new Graph();
             construtor.construtorGraph(boxes, g);
-            System.out.println(construtor.encontrarMaiorAninhamento(g, boxes));
+            System.out.println(construtor.encontrarMaior(g, boxes));
         }
     }
 }

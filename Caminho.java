@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ConstrutorGraph {
+public class Caminho {
 
     public void construtorGraph(List<Box> boxes, Graph graph) {
         for (Box box : boxes) {
@@ -17,7 +17,8 @@ public class ConstrutorGraph {
         }
     }
 
-    public int encontrarMaiorAninhamento(Graph graph, List<Box> boxes) {
+    public int encontrarMaior(Graph graph, List<Box> boxes) {
+        long inicio = System.nanoTime();
         Map<Box, Integer> mapa = new HashMap<>();
         int maior = 0;
         for (Box box : boxes) {
@@ -25,6 +26,9 @@ public class ConstrutorGraph {
                 maior = dfs(graph, box, mapa);
             }
         }
+        long fim = System.nanoTime(); // Captura o tempo de fim
+        System.out.println("Tempo para encontrar o maior número de caixas: " + (fim - inicio) + " ns");
+
         return maior;
     }
 
@@ -32,8 +36,8 @@ public class ConstrutorGraph {
         if (mapa.containsKey(box)) {
             return mapa.get(box);
         }
-        int maior = 1; // Inclui a própria caixa
-        for (Box next : graph.getAdjacentBoxes(box)) {
+        int maior = 1; //tem que ter a propria caixa na brincadeira
+        for (Box next : graph.getAdj(box)) {
             if(maior < dfs(graph, next, mapa)+1){
                 maior = dfs(graph, next, mapa)+1;
             }
